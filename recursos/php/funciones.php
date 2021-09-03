@@ -9,8 +9,7 @@ if($connection->connect_error) die("Fatal error");
 
 
 function consultarMysql($consulta) {
-  global $connection;
-   $result = "";
+   global $connection;
    $result = $connection->query($consulta);
    if(!$result) die("Fatal error");
    return $result;

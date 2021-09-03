@@ -1,0 +1,16 @@
+body{
+background: #6441a5; 
+  background: -webkit-linear-gradient(to right, #6441a5, #2a0845); 
+  background: linear-gradient(to right, #6441a5, #2a0845);  
+}
+.container-fluid{
+    display:inline-flex;
+}
+.rounded {
+    border-radius: .75rem!important;
+}
+#penguin{
+    width: 100%;
+    min-width: 280px;
+}
+
