@@ -6,7 +6,7 @@
     <body>
         <h3>configurando...</h3>
 <?php
-require_once 'funciones.php';
+require_once 'functions.php';
 
 crearTabla('users', 
             'user VARCHAR(16),

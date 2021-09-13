@@ -1,6 +1,8 @@
 <?php 
-require_once '../modelos/funciones.php';
-    $user = $pass = $pass2 = $error ="";
+require_once 'rutas.php';
+require_once MODELS_PATH.'functions.php';
+    $user = $pass = $pass2 ="";
+    $error = "Error";
     if(isset($_SESSION["user"])){
         destruirSesion();
     }
@@ -12,15 +14,15 @@ require_once '../modelos/funciones.php';
            $error = "Error faltan campos";
         }else{
             if($pass!=$pass2){
-                $error  = "las contraseñas no coinciden";
+                $error  = "Error las contraseñas no coinciden";
             }else{
                 $resultado = consultarMysql("SELECT * FROM users WHERE user='$user'");
                 if($resultado->num_rows){
-                    $error = "El usuario ya existe";
+                    $error = "Error el usuario ya existe";
                 }else{
                     $pass = password_hash($pass,PASSWORD_DEFAULT);
                     consultarMysql("INSERT INTO users VALUES('$user','$pass')");
-                    die("Cuenta creada");
+                    $error = "Cuenta creada exitosamente";       
             }
          }
         }

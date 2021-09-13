@@ -1,5 +1,6 @@
 <?php
-require_once '../modelos/funciones.php';
+require_once 'rutas.php';
+require_once MODELS_PATH.'functions.php';
 if (isset($_POST['user'])) {
     $user = sanitizarString($_POST['user']);
     $resultado = consultarMysql("SELECT * FROM users WHERE user='$user'");
