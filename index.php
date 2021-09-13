@@ -11,12 +11,12 @@ require_once 'web/plantillas/header.php';
                 <div>
                     <h2> Penguin's Nest </h2>
                 </div>
-                <div  id="formulario">
+                <div id="formulario">
                     <?php require_once VIEWS_PATH . 'login.php'; ?>
                 </div>
                 <br>
                 <span id="registro-s">¿No tienes una cuenta? </span>
-                <a id="registro-a" value="registrate" href="#"> Registrate!</a>
+                <button id="registro-a" value="registrate" class="btn shadow-none btn-link p-0">Registrate!</button>
             </div>
         </div>
     </div>
@@ -30,7 +30,7 @@ require_once 'web/plantillas/header.php';
                 document.getElementById("formulario").innerHTML = this.responseText;
             }
         };
-        let f = document.getElementById("hidde").value + "";
+        let f = document.getElementById("hidde").value;
         if (f == "registrar") {
             document.getElementById("registro-s").innerHTML = "¿Ya tienes una cuenta? ";
             document.getElementById("registro-a").innerHTML = "Ingresa!";
@@ -51,14 +51,69 @@ require_once 'web/plantillas/header.php';
         if (user == '') {
             $('#used').html('');
         } else {
-           $.post(
-               'web/scripts/checkUser.php',
-               {user : user},
-               function(data) {
-                   $('#used').html(data);
-               }
-           )
+            $.post(
+                'web/scripts/checkUser.php', {
+                    user: user
+                },
+                function(data) {
+                    $('#used').html(data);
+                }
+            )
         }
+    }
+
+    function login() {
+        let user = document.getElementById("username").value;
+        let pass = document.getElementById("password").value;
+
+        $.post(
+            'web/scripts/login_validate.php',{
+                username: user,
+                password: pass
+            },
+            function(data) {
+                if (data.includes("Error")) {
+                    iziToast.error({
+                        title: 'Oops...',
+                        message: data
+                    })
+                } else if(data.includes("ok")){
+                    location.href ="web/plantillas/home";
+                }
+            }
+        )
+    }
+
+    function registrar() {
+        let user = document.getElementById("username").value;
+        let pass = document.getElementById("password").value;
+        let pass2 = document.getElementById("confirmacion").value;
+
+        $.post(
+            'web/scripts/signup_validate.php', {
+                username: user,
+                password: pass,
+                confirmacion: pass2
+            },
+            function(data) {
+                if (data.includes("Error")) {
+                    iziToast.error({
+                        title: 'Oops...',
+                        message: data
+                    })
+                } else {
+                    iziToast.success({
+                        icon: 'fas fa-check-circle',
+                        title: 'Excelente!',
+                        message: data,
+                        onClosing: function() {
+                            location.href ="/penguinNest/";
+                        }
+                    })
+                }
+            }
+        )
+
     }
 </script>
 </body>
