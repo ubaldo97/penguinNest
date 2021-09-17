@@ -46,34 +46,35 @@ if (isset($_SESSION['user'])) {
     <?php
     if ($loggedin) {
     ?>
-        <nav class="navbar navbar-expand-sm  navbar-light bg-light fixed-top">
-            <div class="w-100 mr-auto">
-                <a class="navbar-brand fas fa-user" href="#"><?php echo " " . $user; ?></a>
-                <button class="navbar-toggler" data-target=".navbar-collapse-3" data-toggle="collapse">
-                <span class="navbar-toggler-icon"></span>
-            </button> 
-            </div>
-            
-            <div class="w-100 collapse mx-auto navbar-collapse navbar-collapse-3">
-                <ul class="navbar-nav mx-auto ">
-                    <li class="nav-item">
-                        <a class="nav-link fas fa-user-friends" href="#"> Friends</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link fas fa-user-friends" href="#"> Users</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link fas fa-envelope" href="#"> Messages</a>
-                    </li>
-                </ul>
-            </div>
-            <div class="w-100 collapse navbar-collapse ml-auto navbar-collapse-3">
-                <ul class="navbar-nav ml-auto">
-                    <li class="nav-item">
-                        <a class="nav-link fas fa-sign-out-alt" href="../scripts/logout.php"> Cerrar Sesión</a>
-                    </li>
-                </ul>
-            </div>
-        </nav>
+        <header>
+            <nav class="navbar navbar-expand-sm  navbar-light bg-light">
+                <div class="w-100 mr-auto">
+                    <a class="navbar-brand fas fa-user" href="home"><?php echo " " . $user; ?></a>
+                    <button class="navbar-toggler" data-target=".navbar-collapse-3" data-toggle="collapse">
+                        <span class="navbar-toggler-icon"></span>
+                    </button>
+                </div>
 
+                <div class="w-100 collapse mx-auto navbar-collapse navbar-collapse-3">
+                    <ul class="navbar-nav mx-auto ">
+                        <li class="nav-item">
+                            <a class="nav-link fas fa-user-friends" href="friends"> Friends</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link fas fa-user-friends" href="users"> Users</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link fas fa-envelope" href="messages"> Messages</a>
+                        </li>
+                    </ul>
+                </div>
+                <div class="w-100 collapse navbar-collapse ml-auto navbar-collapse-3">
+                    <ul class="navbar-nav ml-auto">
+                        <li class="nav-item">
+                            <a class="nav-link fas fa-sign-out-alt" href="../scripts/logout"> Cerrar Sesión</a>
+                        </li>
+                    </ul>
+                </div>
+            </nav>
+        </header>
     <?php } ?>

@@ -35,13 +35,13 @@ require_once 'web/plantillas/header.php';
             document.getElementById("registro-s").innerHTML = "¿Ya tienes una cuenta? ";
             document.getElementById("registro-a").innerHTML = "Ingresa!";
             document.getElementById("hidde").value = "ingresar";
-            xhttp.open("GET", "web/plantillas/signup.php", true);
+            xhttp.open("GET", "web/plantillas/signup", true);
             xhttp.send();
         } else {
             document.getElementById("registro-s").innerHTML = "¿No tienes una cuenta? ";
             document.getElementById("registro-a").innerHTML = "Registrate!";
             document.getElementById("hidde").value = "registrar";
-            xhttp.open("GET", "web/plantillas/login.php", true);
+            xhttp.open("GET", "web/plantillas/login", true);
             xhttp.send();
         }
 
@@ -52,7 +52,7 @@ require_once 'web/plantillas/header.php';
             $('#used').html('');
         } else {
             $.post(
-                'web/scripts/checkUser.php', {
+                'web/scripts/checkUser', {
                     user: user
                 },
                 function(data) {
@@ -67,7 +67,7 @@ require_once 'web/plantillas/header.php';
         let pass = document.getElementById("password").value;
 
         $.post(
-            'web/scripts/login_validate.php',{
+            'web/scripts/login_validate',{
                 username: user,
                 password: pass
             },
@@ -90,7 +90,7 @@ require_once 'web/plantillas/header.php';
         let pass2 = document.getElementById("confirmacion").value;
 
         $.post(
-            'web/scripts/signup_validate.php', {
+            'web/scripts/signup_validate', {
                 username: user,
                 password: pass,
                 confirmacion: pass2
